@@ -16,7 +16,7 @@ public class KpoApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(KpoApplication.class, args);
-
+		//1
 		var carService = new CarService();
 
 		var customerStorage = new CustomerStorage();
