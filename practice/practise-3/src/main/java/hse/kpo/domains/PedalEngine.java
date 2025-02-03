@@ -4,6 +4,9 @@ import hse.kpo.interfaces.IEngine;
 import lombok.Getter;
 import lombok.ToString;
 
+/**
+ * класс для работы с педальным двигателем
+ */
 @ToString
 @Getter
 public class PedalEngine implements IEngine {
