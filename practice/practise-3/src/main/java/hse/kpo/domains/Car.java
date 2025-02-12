@@ -4,6 +4,9 @@ import hse.kpo.interfaces.IEngine;
 import lombok.Getter;
 import lombok.ToString;
 
+/**
+ * класс для работы с машинами
+ */
 @ToString
 public class Car {
 
@@ -17,7 +20,12 @@ public class Car {
         this.engine = engine;
     }
 
+    /**
+     * внутри метода просто вызываем соответствующий метод двигателя
+     * @param customer
+     * @return
+     */
     public boolean isCompatible(Customer customer) {
-        return this.engine.isCompatible(customer); // внутри метода просто вызываем соответствующий метод двигателя
+        return this.engine.isCompatible(customer);
     }
 }
