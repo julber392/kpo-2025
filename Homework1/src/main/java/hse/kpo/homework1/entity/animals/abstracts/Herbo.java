@@ -1,6 +1,6 @@
-package hse.kpo.homework1.entity.animals.abstracts;
+package hse.kpo.bighomework1.entity.animals.abstracts;
 
-import hse.kpo.homework1.entity.interfaces.Iherbivore;
+import hse.kpo.bighomework1.entity.interfaces.Iherbivore;
 
 
 public abstract class Herbo extends Animal implements Iherbivore {

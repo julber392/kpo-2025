@@ -1,6 +1,6 @@
-package hse.kpo.homework1.entity.animals.abstracts;
+package hse.kpo.bighomework1.entity.animals.abstracts;
 
-import hse.kpo.homework1.entity.interfaces.IAlive;
+import hse.kpo.bighomework1.entity.interfaces.IAlive;
 import lombok.Getter;
 
 public abstract class Animal implements IAlive {

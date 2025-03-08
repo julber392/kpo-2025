@@ -1,6 +1,6 @@
-package hse.kpo.homework1.services.interfaces;
+package hse.kpo.bighomework1.services.interfaces;
 
-import hse.kpo.homework1.entity.interfaces.IInventory;
+import hse.kpo.bighomework1.entity.interfaces.IInventory;
 
 import java.util.List;
 

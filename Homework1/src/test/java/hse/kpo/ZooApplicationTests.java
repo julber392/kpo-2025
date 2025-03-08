@@ -1,17 +1,17 @@
 package hse.kpo;
 
 
-import hse.kpo.homework1.*;
-import hse.kpo.homework1.services.VetClinic;
-import hse.kpo.homework1.services.ZooService;
-import hse.kpo.homework1.entity.animals.Monkey;
-import hse.kpo.homework1.entity.animals.Tiger;
-import hse.kpo.homework1.entity.animals.Wolf;
+import hse.kpo.bighomework1.*;
+import hse.kpo.bighomework1.services.VetClinic;
+import hse.kpo.bighomework1.services.ZooService;
+import hse.kpo.bighomework1.entity.animals.Monkey;
+import hse.kpo.bighomework1.entity.animals.Tiger;
+import hse.kpo.bighomework1.entity.animals.Wolf;
 
-import hse.kpo.homework1.services.AnimalStorage;
-import hse.kpo.homework1.services.ThingStorage;
-import hse.kpo.homework1.entity.things.Computer;
-import hse.kpo.homework1.entity.things.Table;
+import hse.kpo.bighomework1.services.AnimalStorage;
+import hse.kpo.bighomework1.services.ThingStorage;
+import hse.kpo.bighomework1.entity.things.Computer;
+import hse.kpo.bighomework1.entity.things.Table;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

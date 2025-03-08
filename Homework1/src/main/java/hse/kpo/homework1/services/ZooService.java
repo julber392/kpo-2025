@@ -1,11 +1,11 @@
-package hse.kpo.homework1.services;
+package hse.kpo.bighomework1.services;
 
-import hse.kpo.homework1.entity.animals.abstracts.Animal;
-import hse.kpo.homework1.entity.animals.abstracts.Herbo;
-import hse.kpo.homework1.services.interfaces.IAnimalProvider;
-import hse.kpo.homework1.entity.interfaces.IInventory;
-import hse.kpo.homework1.services.interfaces.IThingProvider;
-import hse.kpo.homework1.services.interfaces.IVetClinic;
+import hse.kpo.bighomework1.entity.animals.abstracts.Animal;
+import hse.kpo.bighomework1.entity.animals.abstracts.Herbo;
+import hse.kpo.bighomework1.services.interfaces.IAnimalProvider;
+import hse.kpo.bighomework1.entity.interfaces.IInventory;
+import hse.kpo.bighomework1.services.interfaces.IThingProvider;
+import hse.kpo.bighomework1.services.interfaces.IVetClinic;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

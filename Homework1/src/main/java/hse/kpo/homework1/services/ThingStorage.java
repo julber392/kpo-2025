@@ -1,7 +1,7 @@
-package hse.kpo.homework1.services;
+package hse.kpo.bighomework1.services;
 
-import hse.kpo.homework1.entity.interfaces.IInventory;
-import hse.kpo.homework1.services.interfaces.IThingProvider;
+import hse.kpo.bighomework1.entity.interfaces.IInventory;
+import hse.kpo.bighomework1.services.interfaces.IThingProvider;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;

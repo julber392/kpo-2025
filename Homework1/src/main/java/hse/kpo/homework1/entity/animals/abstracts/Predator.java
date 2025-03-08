@@ -1,4 +1,4 @@
-package hse.kpo.homework1.entity.animals.abstracts;
+package hse.kpo.bighomework1.entity.animals.abstracts;
 
 
 public abstract class Predator extends Animal {

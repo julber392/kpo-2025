@@ -1,6 +1,6 @@
-package hse.kpo.homework1.entity.things;
+package hse.kpo.bighomework1.entity.things;
 
-import hse.kpo.homework1.entity.interfaces.IInventory;
+import hse.kpo.bighomework1.entity.interfaces.IInventory;
 import org.springframework.stereotype.Component;
 
 @Component

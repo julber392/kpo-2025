@@ -1,4 +1,4 @@
-package hse.kpo.homework1.entity.interfaces;
+package hse.kpo.bighomework1.entity.interfaces;
 
 import lombok.Getter;
 
