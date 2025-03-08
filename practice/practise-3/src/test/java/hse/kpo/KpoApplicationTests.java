@@ -27,11 +27,14 @@ class KpoApplicationTests {
 	@Autowired
 	private HandCarFactory handCarFactory;
 
-	void contextLoads(){
+	@Test
+	@DisplayName("Тест загрузки контекста")
+	void contextLoads() {
 		Assertions.assertNotNull(carService);
 		Assertions.assertNotNull(hseCarService);
 		Assertions.assertNotNull(customerStorage);
 	}
+
 	@Test
 	@DisplayName("Тест загрузки контекста")
 	void hseCarServiceTest() {
