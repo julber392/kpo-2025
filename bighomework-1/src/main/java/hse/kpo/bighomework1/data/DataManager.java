@@ -7,17 +7,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class DataManager {
-    private final Map<String, IDataHandler> handlers = new HashMap<>();
+    private final Map<ReportFormat, IDataHandler> handlers = new HashMap<>();
 
     public DataManager() {
-        handlers.put("csv", new CSVHandler());
-        handlers.put("json", new JsonHandler());
-        handlers.put("yaml", new YamlHandler());
+        handlers.put(ReportFormat.CSV, new CSVHandler());
+        handlers.put(ReportFormat.JSON, new JsonHandler());
+        handlers.put(ReportFormat.YAML, new YamlHandler());
     }
 
     public void exportData(Map<Integer, BankAccount> data,
                            String filePath,
-                           String format) throws IOException {
+                           ReportFormat format) throws IOException {
         IDataHandler handler = handlers.get(format);
         if (handler != null) {
             handler.exportData(data, filePath);
@@ -27,7 +27,7 @@ public class DataManager {
     }
 
     public Map<Integer, BankAccount> importData(String filePath,
-                                                String format) throws IOException {
+                                                ReportFormat format) throws IOException {
         IDataHandler handler = handlers.get(format);
         if (handler != null) {
             return handler.importData(filePath);
