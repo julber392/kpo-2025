@@ -6,19 +6,19 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class DataManager {
-    private final Map<ReportFormat, IDataHandler> handlers = new HashMap<>();
+public class DataManagerExporter {
+    private final Map<ReportFormat, IDataExporter> handlers = new HashMap<>();
 
-    public DataManager() {
-        handlers.put(ReportFormat.CSV, new CSVHandler());
-        handlers.put(ReportFormat.JSON, new JsonHandler());
-        handlers.put(ReportFormat.YAML, new YamlHandler());
+    public DataManagerExporter() {
+        handlers.put(ReportFormat.CSV, new CSVExporter());
+        handlers.put(ReportFormat.JSON, new JsonExporter());
+        handlers.put(ReportFormat.YAML, new YamlExporter());
     }
 
     public void exportData(Map<Integer, BankAccount> data,
                            String filePath,
                            ReportFormat format) throws IOException {
-        IDataHandler handler = handlers.get(format);
+        IDataExporter handler = handlers.get(format);
         if (handler != null) {
             handler.exportData(data, filePath);
         } else {
@@ -26,7 +26,7 @@ public class DataManager {
         }
     }
 
-    public Map<Integer, BankAccount> importData(String filePath,
+    /*public Map<Integer, BankAccount> importData(String filePath,
                                                 ReportFormat format) throws IOException {
         IDataHandler handler = handlers.get(format);
         if (handler != null) {
@@ -34,7 +34,7 @@ public class DataManager {
         } else {
             throw new IllegalArgumentException("Unsupported format: " + format);
         }
-    }
+    }*/
 
     public void printerData(Map<Integer,BankAccount> accounts){
         accounts.forEach((id, account) ->

@@ -1,9 +1,7 @@
 package hse.kpo.bighomework1;
-import hse.kpo.bighomework1.data.DataManager;
+import hse.kpo.bighomework1.data.DataManagerExporter;
 import hse.kpo.bighomework1.data.ReportFormat;
 import hse.kpo.bighomework1.entity.BankAccount;
-import hse.kpo.bighomework1.entity.CategoryType;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.io.IOException;
@@ -17,7 +15,7 @@ public class Application {
         accounts.put(1, new BankAccount(1, "Основной счет", 1000));
         accounts.put(2, new BankAccount(2, "Сберегательный счет", 5000));
 
-        DataManager dataManager = new DataManager();
+        DataManagerExporter dataManager = new DataManagerExporter();
 
         // Тест JSON
         String jsonFilePath = "data.json";

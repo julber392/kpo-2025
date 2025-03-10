@@ -1,32 +1,17 @@
 package hse.kpo.bighomework1.data;
 
+import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvException;
 import hse.kpo.bighomework1.entity.BankAccount;
-import com.opencsv.CSVReader;
-import com.opencsv.CSVWriter;
 
-import java.io.*;
-import java.util.List;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.Reader;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-public class CSVHandler {
-    @Override
-    public void exportData(Map<Integer, BankAccount> data, String filePath) throws IOException {
-        try (Writer writer = new FileWriter(filePath);
-             CSVWriter csvWriter = new CSVWriter(writer)) {
-            String[] header = {"id", "name", "balance"};
-            csvWriter.writeNext(header);
-            for (BankAccount account : data.values()) {
-                csvWriter.writeNext(new String[]{
-                        String.valueOf(account.getId()),
-                        account.getName(),
-                        String.valueOf(account.getBalance())
-                });
-            }
-        }
-    }
-
+public class CSVImporter implements IDataImporter {
     @Override
     public Map<Integer, BankAccount> importData(String filePath) throws IOException {
         Map<Integer, BankAccount> data = new HashMap<>();
@@ -44,5 +29,4 @@ public class CSVHandler {
         }
         return data;
     }
-
 }
