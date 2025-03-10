@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class YamlHandler implements IDataHandler{
+public class YamlHandler {
     private final ObjectMapper yamlMapper = new YAMLMapper();
     @Override
     public void exportData(Map<Integer, BankAccount> data, String filePath) throws IOException {

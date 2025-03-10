@@ -1,16 +1,13 @@
 package hse.kpo.bighomework1.data;
 import java.io.File;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
-import com.opencsv.CSVReader;
-import com.opencsv.CSVWriter;
 import hse.kpo.bighomework1.entity.BankAccount;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class JsonHandler implements IDataHandler {
+public class JsonHandler {
     private final ObjectMapper objectMapper = new ObjectMapper();
     @Override
     public void exportData(Map<Integer, BankAccount> data, String filePath) throws IOException {

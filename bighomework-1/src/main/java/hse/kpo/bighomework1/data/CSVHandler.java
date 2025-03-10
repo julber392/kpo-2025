@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CSVHandler implements IDataHandler {
+public class CSVHandler {
     @Override
     public void exportData(Map<Integer, BankAccount> data, String filePath) throws IOException {
         try (Writer writer = new FileWriter(filePath);
