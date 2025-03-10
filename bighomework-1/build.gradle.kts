@@ -32,6 +32,9 @@ dependencies {
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.junit.jupiter:junit-jupiter:5.7.1")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+	implementation("com.fasterxml.jackson.core:jackson-databind:2.15.0")
+	implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.15.0")
+	implementation("com.opencsv:opencsv:5.7.1")
 }
 
 tasks.withType<Test> {

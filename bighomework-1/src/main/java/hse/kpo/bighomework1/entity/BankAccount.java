@@ -10,6 +10,7 @@ public class BankAccount {
     Integer id;
     String name;
     Integer balance; //Копейки
+    public BankAccount() {}
     public BankAccount(Integer id, String name, Integer balance) {
         this.id = id;
         this.name = name;
