@@ -1,5 +1,5 @@
 package hse.kpo.bighomework1;
-import hse.kpo.bighomework1.data.DataManagerExporter;
+import hse.kpo.bighomework1.data.exporter.DataManagerExporter;
 import hse.kpo.bighomework1.data.ReportFormat;
 import hse.kpo.bighomework1.entity.BankAccount;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

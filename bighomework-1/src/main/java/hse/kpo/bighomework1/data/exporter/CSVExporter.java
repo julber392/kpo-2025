@@ -1,20 +1,20 @@
-package hse.kpo.bighomework1.data;
+package hse.kpo.bighomework1.data.exporter;
 
-import com.opencsv.exceptions.CsvException;
+import hse.kpo.bighomework1.data.ReportFormat;
 import hse.kpo.bighomework1.entity.BankAccount;
-import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
 import hse.kpo.bighomework1.entity.Category;
+import hse.kpo.bighomework1.entity.Exportable;
 import hse.kpo.bighomework1.entity.Operation;
+import org.springframework.stereotype.Component;
 
 import java.io.*;
-import java.util.List;
-import java.util.HashMap;
 import java.util.Map;
-
+@Component
 public class CSVExporter implements IDataExporter {
     @Override
-    public void exportBankAccount(Map<Integer, BankAccount> data, String filePath) throws IOException {
+    public void export(Map<Integer, ? extends Exportable> data, String filePath) throws IOException {
+
         try (Writer writer = new FileWriter(filePath);
              CSVWriter csvWriter = new CSVWriter(writer)) {
             String[] header = {"id", "name", "balance"};
@@ -30,6 +30,10 @@ public class CSVExporter implements IDataExporter {
     }
 
     @Override
+    public ReportFormat getFormat() {
+        return ReportFormat.CSV;
+    }
+/*@Override
     public void exportCategory(Map<Integer, Category> data, String filePath) throws IOException {
         try (Writer writer = new FileWriter(filePath);
              CSVWriter csvWriter = new CSVWriter(writer)) {
@@ -63,5 +67,5 @@ public class CSVExporter implements IDataExporter {
                 });
             }
         }
-    }
+    }*/
 }
