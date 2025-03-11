@@ -1,29 +1,27 @@
 package hse.kpo.bighomework1.data;
 
 import hse.kpo.bighomework1.entity.BankAccount;
+import hse.kpo.bighomework1.services.BankAccountStorage;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class DataManagerExporter {
-    private final Map<ReportFormat, IDataExporter> handlers = new HashMap<>();
+public class DataManagerExporter implements IDataManagerExporter{
+    private final BankAccountStorage bankAccountStorage;
 
-    public DataManagerExporter() {
-        handlers.put(ReportFormat.CSV, new CSVExporter());
-        handlers.put(ReportFormat.JSON, new JsonExporter());
-        handlers.put(ReportFormat.YAML, new YamlExporter());
+    public DataManagerExporter(BankAccountStorage bankAccountStorage) {
+        this.bankAccountStorage=bankAccountStorage;
     }
-
-    public void exportData(Map<Integer, BankAccount> data,
-                           String filePath,
-                           ReportFormat format) throws IOException {
-        IDataExporter handler = handlers.get(format);
+    @Override
+    public void exportData(IDataExporter data,String filePath) throws IOException {
+        data.exportBankAccount(bankAccountStorage.getStorage(),filePath);
+        /*IDataExporter handler = handlers.get(format);
         if (handler != null) {
             handler.exportData(data, filePath);
         } else {
             throw new IllegalArgumentException("Unsupported format: " + format);
-        }
+        }*/
     }
 
     /*public Map<Integer, BankAccount> importData(String filePath,

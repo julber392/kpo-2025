@@ -4,18 +4,20 @@ import hse.kpo.bighomework1.entity.Category;
 import hse.kpo.bighomework1.services.interfaces.IStorage;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class CategoryStorage implements IStorage<Category> {
-    private final List<Category> categories = new ArrayList<>();
+    private final Map<Integer,Category> categories = new HashMap<>();
     @Override
-    public List<Category> getStorage() {
+    public Map<Integer,Category> getStorage() {
         return categories;
     }
     @Override
     public void add(Category category)
     {
-        categories.add(category);
+        categories.put(category.getId(),category);
     }
 
     @Override
