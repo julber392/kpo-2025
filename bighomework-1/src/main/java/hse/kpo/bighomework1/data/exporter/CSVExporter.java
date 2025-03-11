@@ -14,8 +14,8 @@ import java.util.Map;
 public class CSVExporter implements IDataExporter {
     @Override
     public void export(Map<Integer, ? extends Exportable> data, String filePath) throws IOException {
-
-        try (Writer writer = new FileWriter(filePath);
+        data.entrySet().forEach(set -> set.getValue().export(getFormat()));
+        /*try (Writer writer = new FileWriter(filePath);
              CSVWriter csvWriter = new CSVWriter(writer)) {
             String[] header = {"id", "name", "balance"};
             csvWriter.writeNext(header);
@@ -26,7 +26,7 @@ public class CSVExporter implements IDataExporter {
                         String.valueOf(account.getBalance())
                 });
             }
-        }
+        }*/
     }
 
     @Override
