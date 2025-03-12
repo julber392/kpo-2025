@@ -3,6 +3,7 @@ package hse.kpo.bighomework1.entity;
 import hse.kpo.bighomework1.data.ReportFormat;
 import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
 import java.util.HashMap;
