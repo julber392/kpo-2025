@@ -25,8 +25,8 @@ public class Application {
 
         // Тест JSON
         String jsonFilePath = "BankAccount";
-        dataManager.exportData(ReportFormat.YAML,accounts,jsonFilePath);
-        System.out.println("Yaml Exported");
+        dataManager.exportData(ReportFormat.CSV,accounts,jsonFilePath);
+        System.out.println("CSV Exported");
         /*Map<Integer, BankAccount> jsonImportedData = dataManager.importData(jsonFilePath,ReportFormat.JSON);
         jsonImportedData.forEach((id, account) ->
                 System.out.println("ID: " + id + ", Name: " + account.getName() + ", Balance: " + account.getBalance()));
