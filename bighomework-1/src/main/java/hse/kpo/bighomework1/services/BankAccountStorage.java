@@ -12,7 +12,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Component
 public class BankAccountStorage implements IStorage<BankAccount> {
     private final Map<Integer,BankAccount> bankAccounts = new HashMap<>();
-    private static final AtomicInteger idGenerator = new AtomicInteger(1);
+
 
     @Override
     public Map<Integer,BankAccount> getStorage() {

@@ -13,7 +13,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Component
 public class CategoryStorage implements IStorage<Category> {
     private final Map<Integer,Category> categories = new HashMap<>();
-    private static final AtomicInteger idGenerator = new AtomicInteger(1);
     @Override
     public Map<Integer,Category> getStorage() {
         return categories;

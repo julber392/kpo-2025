@@ -31,9 +31,8 @@ public class CategoryFacade {
     void delete(int id){
         categoryStorage.delete(id);
     }
-    void update(Integer id, CategoryType type, String name){
-         categoryStorage.delete(id);
-
-        bankAccountStorage.add(bankAccountFactory.createAccount(newName,newBalance));
+    void update(Integer id, CategoryType newType, String newName){
+        delete(id);
+        categoryStorage.add(categoryFactory.createCategory(id,newType,newName));
     }
 }

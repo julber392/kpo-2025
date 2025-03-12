@@ -13,7 +13,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Component
 public class OperationStorage implements IStorage<Operation> {
     private final Map<Integer,Operation> operations = new HashMap<>();
-    private static final AtomicInteger idGenerator = new AtomicInteger(1);
     @Override
     public Map<Integer,Operation> getStorage() {
         return operations;
