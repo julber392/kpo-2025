@@ -1,11 +1,13 @@
 package hse.kpo.bighomework1;
-import hse.kpo.bighomework1.data.exporter.DataManagerExporter;
+import hse.kpo.bighomework1.data.exporter.*;
 import hse.kpo.bighomework1.data.ReportFormat;
 import hse.kpo.bighomework1.entity.BankAccount;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @SpringBootApplication
@@ -15,13 +17,17 @@ public class Application {
         accounts.put(1, new BankAccount(1, "Основной счет", 1000));
         accounts.put(2, new BankAccount(2, "Сберегательный счет", 5000));
 
-        DataManagerExporter dataManager = new DataManagerExporter();
+        List<IDataExporter> dataExporterList=new ArrayList<>();
+        dataExporterList.add(new JsonExporter());
+        dataExporterList.add(new YamlExporter());
+        dataExporterList.add(new CSVExporter());
+        DataManagerExporter dataManager = new DataManagerExporter(dataExporterList);
 
         // Тест JSON
-        String jsonFilePath = "data.json";
-        dataManager.exportData(accounts, jsonFilePath,ReportFormat.JSON);
-        System.out.println("JSON Exported");
-        Map<Integer, BankAccount> jsonImportedData = dataManager.importData(jsonFilePath,ReportFormat.JSON);
+        String jsonFilePath = "BankAccount";
+        dataManager.exportData(ReportFormat.YAML,accounts,jsonFilePath);
+        System.out.println("Yaml Exported");
+        /*Map<Integer, BankAccount> jsonImportedData = dataManager.importData(jsonFilePath,ReportFormat.JSON);
         jsonImportedData.forEach((id, account) ->
                 System.out.println("ID: " + id + ", Name: " + account.getName() + ", Balance: " + account.getBalance()));
 
@@ -40,6 +46,6 @@ public class Application {
         Map<Integer, BankAccount> yamlImportedData = dataManager.importData(yamlFilePath,ReportFormat.YAML);
         yamlImportedData.forEach((id, account) ->
                 System.out.println("YAML -> ID: " + id + ", Name: " + account.getName() + ", Balance: " + account.getBalance()));
-        //SpringApplication.run(Application.class, args);
+        //SpringApplication.run(Application.class, args);*/
     }
 }

@@ -8,13 +8,20 @@ import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 @Component
 public class YamlExporter implements IDataExporter{
     private final ObjectMapper yamlMapper = new YAMLMapper();
     @Override
     public void export(Map<Integer, ? extends Exportable> data, String filePath) throws IOException {
-        yamlMapper.writeValue(new File(filePath), data);
+        Map<Integer, Map<String, String>> exportedData = new HashMap<>();
+
+        data.forEach((key, value) -> exportedData.put(key, value.export(getFormat())));
+
+        File file = new File(filePath + ".yaml");
+
+        yamlMapper.writeValue(file, exportedData);
     }
 
     @Override

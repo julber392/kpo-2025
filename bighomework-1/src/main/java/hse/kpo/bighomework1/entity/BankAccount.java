@@ -6,6 +6,9 @@ import lombok.Getter;
 import lombok.ToString;
 import lombok.experimental.FieldDefaults;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Getter
 @FieldDefaults(level= AccessLevel.PRIVATE)
 public class BankAccount implements Exportable {
@@ -20,13 +23,25 @@ public class BankAccount implements Exportable {
     }
 
     @Override
-    public String export(ReportFormat format) {
-        return switch (format) {
-            case JSON -> String.format("\"%d\":{\"id\":%d,\"type\":\"%s\",\"balance\":%d}", id, id, name, balance);
-            case CSV -> String.format("id,name,balance\n%d,%s,%d", id, name, balance);
-            case YAML -> String.format("%d:\n  id: %d\n  name: %s\n  balance: %d",id, id, name, balance);
-            default -> throw new IllegalArgumentException("Не найден формат для экспорта данных");
+    public Map<String, String> export(ReportFormat format) throws IllegalArgumentException{
+        return switch (format){
+            case CSV -> dataCSV();
+            case JSON -> dataJson();
+            case YAML -> dataYaml();
+            default -> throw new IllegalArgumentException("Не поддерживает export в данном формате");
         };
     }
-
+    private Map<String, String> dataJson(){
+        Map<String,String> data=new HashMap<>();
+        data.put("id",id.toString());
+        data.put("name",name);
+        data.put("balance",balance.toString());
+        return data;
+    }
+    private Map<String, String> dataYaml(){
+        return dataJson();
+    }
+    private Map<String, String> dataCSV(){
+        return dataJson();
+    }
 }

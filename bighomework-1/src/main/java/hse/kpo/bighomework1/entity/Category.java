@@ -5,6 +5,9 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.experimental.FieldDefaults;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Getter
 @FieldDefaults(level= AccessLevel.PRIVATE)
 public class Category implements Exportable{
@@ -18,12 +21,25 @@ public class Category implements Exportable{
         this.name = name;
     }
     @Override
-    public String export(ReportFormat format) {
-        return switch (format) {
-            case JSON -> String.format("\"%d\":{\"id\":%d,\"type\":\"%s\",\"name\":%s}", id, id, type, name);
-            case CSV -> String.format("id,type,name\n%d,%s,%s", id, type, name);
-            case YAML -> String.format("%d:\n  id: %d\n  type: %s\n  name: %s",id, id, type, name);
-            default -> throw new IllegalArgumentException("Не найден формат для экспорта данных");
+    public Map<String, String> export(ReportFormat format) throws IllegalArgumentException{
+        return switch (format){
+            case CSV -> dataCSV();
+            case JSON -> dataJson();
+            case YAML -> dataYaml();
+            default -> throw new IllegalArgumentException("Не поддерживает export в данном формате");
         };
+    }
+    private Map<String, String> dataJson(){
+        Map<String,String> data=new HashMap<>();
+        data.put("id",id.toString());
+        data.put("type", type.toString());
+        data.put("name",name);
+        return data;
+    }
+    private Map<String, String> dataYaml(){
+        return dataJson();
+    }
+    private Map<String, String> dataCSV(){
+        return dataJson();
     }
 }

@@ -21,25 +21,9 @@ public class DataManagerExporter implements IDataManagerExporter {
         this.dataExporter = dataExporterList.stream().collect(Collectors.
                 toMap(IDataExporter::getFormat, dataExporter -> dataExporter));
     }
-
     @Override
     public void exportData(ReportFormat format,Map<Integer,? extends Exportable> data,
                            String filePath) throws IOException {
         dataExporter.get(format).export(data,filePath);
-    }
-
-    /*public Map<Integer, BankAccount> importData(String filePath,
-                                                ReportFormat format) throws IOException {
-        IDataHandler handler = handlers.get(format);
-        if (handler != null) {
-            return handler.importData(filePath);
-        } else {
-            throw new IllegalArgumentException("Unsupported format: " + format);
-        }
-    }*/
-
-    public void printerData(Map<Integer, BankAccount> accounts) {
-        accounts.forEach((id, account) ->
-                System.out.println("ID: " + account.getId() + ", Name: " + account.getName() + ", Balance: " + account.getBalance()));
     }
 }
