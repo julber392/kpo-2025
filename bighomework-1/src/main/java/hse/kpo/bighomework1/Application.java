@@ -52,7 +52,7 @@ public class Application {
                 1000,"10.10.2003","Сеть кафе",categoryFacade.get().getStorage().get(1).getType());
 
         operationFacade.create(categoryFacade.get().getStorage().get(4),bankAccountFacade.get().getStorage().get(2),
-                3000,"10.10.2013","Сеть кафе",categoryFacade.get().getStorage().get(4).getType());
+                3000,"10.10.2013","",categoryFacade.get().getStorage().get(4).getType());
 
         operationFacade.create(categoryFacade.get().getStorage().get(1),bankAccountFacade.get().getStorage().get(3),
                 1000,"10.10.2003","Сеть кафе",categoryFacade.get().getStorage().get(1).getType());
