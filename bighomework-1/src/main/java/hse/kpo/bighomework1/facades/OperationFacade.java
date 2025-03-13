@@ -20,20 +20,20 @@ public class OperationFacade {
         this.operationStorage = operationStorage;
         this.operationFactory = operationFactory;
     }
-    void create(Category category,
+    public void create(Category category,
                 BankAccount bankAccount,
                 Integer amount, String date,
                 String description,
                 CategoryType type){
         operationStorage.add(operationFactory.createOperation(category,bankAccount,amount,date,description,type));
     }
-    Map<Integer, Operation> get(){
-        return operationStorage.getStorage();
+    public OperationStorage get(){
+        return operationStorage;
     }
-    void delete(int id){
+    public void delete(int id){
         operationStorage.delete(id);
     }
-    void update(Integer id,
+    public void update(Integer id,
                 Category category,
                 BankAccount bankAccount,
                 Integer amount, String date,

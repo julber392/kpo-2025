@@ -22,16 +22,16 @@ public class CategoryFacade {
         this.categoryFactory = categoryFactory;
     }
 
-    void create(CategoryType type, String name){
+    public void create(CategoryType type, String name){
         categoryStorage.add(categoryFactory.createCategory(type,name));
     }
-    Map<Integer, Category> get(){
-        return categoryStorage.getStorage();
+    public CategoryStorage get(){
+        return categoryStorage;
     }
-    void delete(int id){
+    public void delete(int id){
         categoryStorage.delete(id);
     }
-    void update(Integer id, CategoryType newType, String newName){
+    public void update(Integer id, CategoryType newType, String newName){
         delete(id);
         categoryStorage.add(categoryFactory.createCategory(id,newType,newName));
     }

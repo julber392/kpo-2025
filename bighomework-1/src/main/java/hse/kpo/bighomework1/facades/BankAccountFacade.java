@@ -18,16 +18,16 @@ public class BankAccountFacade {
         this.bankAccountFactory = bankAccountFactory;
     }
 
-    void create(String name){
+    public void create(String name){
         bankAccountStorage.add(bankAccountFactory.createAccount(name,0));
     }
-    Map<Integer,BankAccount> get(){
-        return bankAccountStorage.getStorage();
+    public BankAccountStorage get(){
+        return bankAccountStorage;
     }
-    void delete(int id){
+    public void delete(int id){
         bankAccountStorage.delete(id);
     }
-    void update(int id, String newName, Integer newBalance){
+    public void update(int id, String newName, Integer newBalance){
         delete(id);
         bankAccountStorage.add(bankAccountFactory.createAccount(id,newName,newBalance));
     }
