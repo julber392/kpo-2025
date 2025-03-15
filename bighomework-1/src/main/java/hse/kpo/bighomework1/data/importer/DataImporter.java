@@ -1,4 +1,4 @@
-package hse.kpo.bighomework1.data;
+package hse.kpo.bighomework1.data.importer;
 
 import java.io.IOException;
 import java.util.List;

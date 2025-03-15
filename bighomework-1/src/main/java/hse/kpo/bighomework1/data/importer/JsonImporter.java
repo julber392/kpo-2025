@@ -1,13 +1,9 @@
-package hse.kpo.bighomework1.data;
+package hse.kpo.bighomework1.data.importer;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import hse.kpo.bighomework1.entity.BankAccount;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class JsonImporter extends DataImporter {

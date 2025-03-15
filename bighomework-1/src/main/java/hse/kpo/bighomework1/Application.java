@@ -1,21 +1,15 @@
 package hse.kpo.bighomework1;
 import hse.kpo.bighomework1.data.*;
 import hse.kpo.bighomework1.data.exporter.*;
-import hse.kpo.bighomework1.entity.BankAccount;
-import hse.kpo.bighomework1.entity.Category;
-import hse.kpo.bighomework1.entity.CategoryType;
-import hse.kpo.bighomework1.entity.Operation;
+import hse.kpo.bighomework1.data.importer.CSVImporter;
+import hse.kpo.bighomework1.data.importer.DataImporter;
+import hse.kpo.bighomework1.data.importer.JsonImporter;
+import hse.kpo.bighomework1.data.importer.YamlImporter;
 import hse.kpo.bighomework1.facades.BankAccountFacade;
-import hse.kpo.bighomework1.facades.CategoryFacade;
-import hse.kpo.bighomework1.facades.OperationFacade;
 import hse.kpo.bighomework1.factories.BankAccountFactory;
-import hse.kpo.bighomework1.factories.CategoryFactory;
-import hse.kpo.bighomework1.factories.OperationFactory;
 import hse.kpo.bighomework1.services.BankAccountStorage;
-import hse.kpo.bighomework1.services.CategoryStorage;
-import hse.kpo.bighomework1.services.OperationStorage;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import hse.kpo.bighomework1.analytics.*;
+
 import java.io.IOException;
 import java.util.*;
 

@@ -1,16 +1,9 @@
-package hse.kpo.bighomework1.data;
-
-import com.opencsv.CSVReader;
-import com.opencsv.exceptions.CsvException;
-import hse.kpo.bighomework1.entity.BankAccount;
+package hse.kpo.bighomework1.data.importer;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.Reader;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 
 public class CSVImporter extends DataImporter {
