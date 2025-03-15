@@ -39,7 +39,6 @@ public class OperationFacade {
                 Integer amount, String date,
                 String description,
                 CategoryType type){
-        delete(id);
         operationStorage.add(operationFactory.createOperation(id,category,bankAccount,amount,date,description,type));
     }
 }

@@ -32,7 +32,6 @@ public class CategoryFacade {
         categoryStorage.delete(id);
     }
     public void update(Integer id, CategoryType newType, String newName){
-        delete(id);
         categoryStorage.add(categoryFactory.createCategory(id,newType,newName));
     }
 }

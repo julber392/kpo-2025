@@ -28,7 +28,6 @@ public class BankAccountFacade {
         bankAccountStorage.delete(id);
     }
     public void update(int id, String newName, Integer newBalance){
-        delete(id);
         bankAccountStorage.add(bankAccountFactory.createAccount(id,newName,newBalance));
     }
 }
