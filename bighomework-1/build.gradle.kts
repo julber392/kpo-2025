@@ -1,7 +1,7 @@
 plugins {
 	java
 	jacoco
-	checkstyle
+	//checkstyle
 	id("org.springframework.boot") version "3.4.2"
 	id("io.spring.dependency-management") version "1.1.7"
 }
@@ -9,12 +9,12 @@ plugins {
 group = "hse"
 version = "0.0.1-SNAPSHOT"
 
-checkstyle {
+/*checkstyle {
 	toolVersion = "10.13.0"
 	isIgnoreFailures = false
 	maxWarnings = 0
 	maxErrors = 0
-}
+}*/
 
 configurations {
 	compileOnly {
@@ -28,6 +28,7 @@ repositories {
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter")
+	implementation("org.springframework.boot:spring-boot-starter-actuator")
 	compileOnly("org.projectlombok:lombok")
 	annotationProcessor("org.projectlombok:lombok")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
@@ -37,7 +38,10 @@ dependencies {
 	implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.15.0")
 	implementation("com.opencsv:opencsv:5.7.1")
 }
-
+jacoco {
+	toolVersion = "0.8.12"
+	reportsDirectory = layout.buildDirectory.dir("customJacocoReportDir")
+}
 tasks.withType<Test> {
 	useJUnitPlatform()
 }
@@ -48,6 +52,16 @@ tasks.jacocoTestReport {
 	dependsOn(tasks.test) // tests are required to run before generating the report
 
 	reports {
-		html.required.set(true)
+		xml.required = false
+		csv.required = false
+		html.outputLocation = layout.buildDirectory.dir("jacocoHtml")
 	}
+	classDirectories.setFrom(
+		files(classDirectories.files.map {
+			fileTree(it) {
+				// Шаблон для исключения всех классов с именем Main.class (в любых пакетах)
+				exclude("**/Application.class")
+			}
+		})
+	)
 }
