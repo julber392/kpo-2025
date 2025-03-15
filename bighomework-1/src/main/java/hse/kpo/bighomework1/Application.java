@@ -8,6 +8,7 @@ import hse.kpo.bighomework1.data.importer.YamlImporter;
 import hse.kpo.bighomework1.facades.BankAccountFacade;
 import hse.kpo.bighomework1.factories.BankAccountFactory;
 import hse.kpo.bighomework1.services.BankAccountStorage;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.io.IOException;
@@ -16,6 +17,7 @@ import java.util.*;
 @SpringBootApplication
 public class Application {
     public static void main(String[] args) throws IOException {
+        SpringApplication.run(Application.class, args);
         BankAccountFacade bankAccountFacade=new BankAccountFacade(new BankAccountStorage(),new BankAccountFactory());
 
         bankAccountFacade.create("Основной счет");
@@ -114,6 +116,6 @@ public class Application {
         Map<Integer, BankAccount> yamlImportedData = dataManager.importData(yamlFilePath,ReportFormat.YAML);
         yamlImportedData.forEach((id, account) ->
                 System.out.println("YAML -> ID: " + id + ", Name: " + account.getName() + ", Balance: " + account.getBalance()));
-        //SpringApplication.run(Application.class, args);*/
+        */
     }
 }

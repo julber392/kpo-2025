@@ -26,15 +26,15 @@ public class CSVImporter extends DataImporter {
         if (lines.length < 2) return result;
 
         String[] headers = lines[0].split(",");
-        String keyHeader = headers[0]; // Первый заголовок — ключ
+        String keyHeader = headers[0];
 
         for (int i = 1; i < lines.length; i++) {
             String[] values = lines[i].split(",");
             if (values.length < headers.length) continue;
 
-            String key = values[0]; // Первое значение строки — идентификатор
+            String key = values[0];
             Map<String, String> rowMap = new LinkedHashMap<>();
-            for (int j = 1; j < headers.length; j++) { // Начинаем со второго столбца
+            for (int j = 1; j < headers.length; j++) {
                 rowMap.put(headers[j], values[j]);
             }
 
