@@ -14,9 +14,9 @@ public class JsonExporter implements IDataExporter {
     @Override
     public void export(Map<Integer, ? extends Exportable> data, String filePath) throws IOException {
 
-        Map<Integer, Map<String, String>> exportedData = new HashMap<>();
+        Map<Integer, String> exportedData = new HashMap<>();
 
-        data.forEach((key, value) -> exportedData.put(key, value.export(getFormat())));
+        data.forEach((key, value) -> exportedData.put(key, value.export(getFormat()).toString()));
 
         File file = new File(filePath + ".json");
 

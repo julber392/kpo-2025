@@ -1,6 +1,6 @@
 package hse.kpo.bighomework1;
+import hse.kpo.bighomework1.data.*;
 import hse.kpo.bighomework1.data.exporter.*;
-import hse.kpo.bighomework1.data.ReportFormat;
 import hse.kpo.bighomework1.entity.BankAccount;
 import hse.kpo.bighomework1.entity.Category;
 import hse.kpo.bighomework1.entity.CategoryType;
@@ -22,8 +22,31 @@ import java.util.*;
 @SpringBootApplication
 public class Application {
     public static void main(String[] args) throws IOException {
-
         BankAccountFacade bankAccountFacade=new BankAccountFacade(new BankAccountStorage(),new BankAccountFactory());
+
+        bankAccountFacade.create("Основной счет");
+        bankAccountFacade.update(1,"Основной счет",1000);
+        bankAccountFacade.create("Сберегательный счет");
+        bankAccountFacade.update(2,"Основной счет",5000);
+
+        List<IDataExporter> dataExporterList=new ArrayList<>();
+        dataExporterList.add(new JsonExporter());
+        dataExporterList.add(new YamlExporter());
+        dataExporterList.add(new CSVExporter());
+        DataManagerExporter dataManager = new DataManagerExporter(dataExporterList);
+
+        dataManager.exportData(ReportFormat.JSON,bankAccountFacade.get().getStorage(),"BankAccount");
+        DataImporter importer = new CSVImporter();
+        importer.importData("BankAccount.csv");
+
+        importer = new JsonImporter();
+        importer.importData("BankAccount.json");
+
+        importer = new YamlImporter();
+        importer.importData("BankAccount.yaml");
+
+
+        /*BankAccountFacade bankAccountFacade=new BankAccountFacade(new BankAccountStorage(),new BankAccountFactory());
         CategoryFacade categoryFacade=new CategoryFacade(new CategoryStorage(),new CategoryFactory());
         OperationFacade operationFacade=new OperationFacade(new OperationStorage(),new OperationFactory());
 
