@@ -11,16 +11,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Component
 public class OperationFactory {
     private static final AtomicInteger idGenerator = new AtomicInteger(1);
-    public Operation createOperation(Integer id, Category category, BankAccount bankAccount,
-                                     Integer amount, String date, String description, CategoryType type) {
-        if (id == null || category == null || bankAccount == null || amount == null || date == null || description == null || type == null) {
-            throw new IllegalArgumentException("None of the Operation fields can be null");
-        }
-        if (amount <= 0) {
-            throw new IllegalArgumentException("Operation amount must be greater than zero");
-        }
-        return new Operation(id, category, bankAccount, amount, date, description, type);
-    }
     public Operation createOperation(Category category, BankAccount bankAccount,
                                      Integer amount, String date, String description, CategoryType type) {
         if (category == null || bankAccount == null || amount == null || date == null || description == null || type == null) {
@@ -31,4 +21,15 @@ public class OperationFactory {
         }
         return new Operation(idGenerator.getAndIncrement(), category, bankAccount, amount, date, description, type);
     }
+    public Operation createOperation(Integer id, Category category, BankAccount bankAccount,
+                                     Integer amount, String date, String description, CategoryType type) {
+        if (id == null || category == null || bankAccount == null || amount == null || date == null || description == null || type == null) {
+            throw new IllegalArgumentException("None of the Operation fields can be null");
+        }
+        if (amount <= 0) {
+            throw new IllegalArgumentException("Operation amount must be greater than zero");
+        }
+        return new Operation(id, category, bankAccount, amount, date, description, type);
+    }
+
 }

@@ -27,7 +27,7 @@ public class BankAccountFacade {
     public void delete(int id){
         bankAccountStorage.delete(id);
     }
-    public void update(int id, String newName, Integer newBalance){
+    public void update(int id, String newName, Integer newBalance) throws IllegalArgumentException{
         bankAccountStorage.add(bankAccountFactory.createAccount(id,newName,newBalance));
     }
 }
