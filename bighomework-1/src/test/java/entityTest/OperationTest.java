@@ -14,7 +14,7 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class OperationTest {
+public class OperationTest {
 
     private Operation operation;
     private Category category;

@@ -10,7 +10,7 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class BankAccountTest {
+public class BankAccountTest {
 
     private BankAccount bankAccount;
 
