@@ -1,13 +1,24 @@
 package hse.kpo.bighomework1;
+import hse.kpo.bighomework1.analytics.BalanceCalculationCommand;
+import hse.kpo.bighomework1.analytics.Command;
+import hse.kpo.bighomework1.analytics.GroupByCategoryCommand;
+import hse.kpo.bighomework1.analytics.TimedCommand;
 import hse.kpo.bighomework1.data.*;
 import hse.kpo.bighomework1.data.exporter.*;
 import hse.kpo.bighomework1.data.importer.CSVImporter;
 import hse.kpo.bighomework1.data.importer.DataImporter;
 import hse.kpo.bighomework1.data.importer.JsonImporter;
 import hse.kpo.bighomework1.data.importer.YamlImporter;
+import hse.kpo.bighomework1.entity.CategoryType;
 import hse.kpo.bighomework1.facades.BankAccountFacade;
+import hse.kpo.bighomework1.facades.CategoryFacade;
+import hse.kpo.bighomework1.facades.OperationFacade;
 import hse.kpo.bighomework1.factories.BankAccountFactory;
+import hse.kpo.bighomework1.factories.CategoryFactory;
+import hse.kpo.bighomework1.factories.OperationFactory;
 import hse.kpo.bighomework1.services.BankAccountStorage;
+import hse.kpo.bighomework1.services.CategoryStorage;
+import hse.kpo.bighomework1.services.OperationStorage;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -19,30 +30,6 @@ public class Application {
     public static void main(String[] args) throws IOException {
         SpringApplication.run(Application.class, args);
         BankAccountFacade bankAccountFacade=new BankAccountFacade(new BankAccountStorage(),new BankAccountFactory());
-
-        bankAccountFacade.create("Основной счет");
-        bankAccountFacade.update(1,"Основной счет",1000);
-        bankAccountFacade.create("Сберегательный счет");
-        bankAccountFacade.update(2,"Основной счет",5000);
-
-        List<IDataExporter> dataExporterList=new ArrayList<>();
-        dataExporterList.add(new JsonExporter());
-        dataExporterList.add(new YamlExporter());
-        dataExporterList.add(new CSVExporter());
-        DataManagerExporter dataManager = new DataManagerExporter(dataExporterList);
-
-        dataManager.exportData(ReportFormat.JSON,bankAccountFacade.get().getStorage(),"BankAccount");
-        DataImporter importer = new CSVImporter();
-        importer.importData("BankAccount.csv");
-
-        importer = new JsonImporter();
-        importer.importData("BankAccount.json");
-
-        importer = new YamlImporter();
-        importer.importData("BankAccount.yaml");
-
-
-        /*BankAccountFacade bankAccountFacade=new BankAccountFacade(new BankAccountStorage(),new BankAccountFactory());
         CategoryFacade categoryFacade=new CategoryFacade(new CategoryStorage(),new CategoryFactory());
         OperationFacade operationFacade=new OperationFacade(new OperationStorage(),new OperationFactory());
 
@@ -80,9 +67,6 @@ public class Application {
         Command categoryCommand = new TimedCommand(new GroupByCategoryCommand(operationFacade.get(), categoryFacade.get()));
         balanceCommand.execute();
         categoryCommand.execute();
-        /*Map<Integer, BankAccount> accounts = new HashMap<>();
-        accounts.put(1, new BankAccount(1, "Основной счет", 1000));
-        accounts.put(2, new BankAccount(2, "Сберегательный счет", 5000));
 
         List<IDataExporter> dataExporterList=new ArrayList<>();
         dataExporterList.add(new JsonExporter());
@@ -90,32 +74,11 @@ public class Application {
         dataExporterList.add(new CSVExporter());
         DataManagerExporter dataManager = new DataManagerExporter(dataExporterList);
 
-
-
-
-        // Тест JSON
         String jsonFilePath = "BankAccount";
-        dataManager.exportData(ReportFormat.CSV,accounts,jsonFilePath);
-        System.out.println("CSV Exported");
-        Map<Integer, BankAccount> jsonImportedData = dataManager.importData(jsonFilePath,ReportFormat.JSON);
-        jsonImportedData.forEach((id, account) ->
-                System.out.println("ID: " + id + ", Name: " + account.getName() + ", Balance: " + account.getBalance()));
+        DataImporter jsonImporter=new JsonImporter();
+        dataManager.exportData(ReportFormat.JSON,bankAccountFacade.get().getStorage(),jsonFilePath);
+        Map<String, String> jsonImportedData = jsonImporter.importData(jsonFilePath+".json");
 
-        // Тест CSV
-        String csvFilePath = "data.csv";
-        dataManager.exportData(accounts, csvFilePath,ReportFormat.CSV);
-        System.out.println("CSV Exported");
-        Map<Integer, BankAccount> csvImportedData = dataManager.importData(csvFilePath,ReportFormat.CSV);
-        csvImportedData.forEach((id, account) ->
-                System.out.println("CSV -> ID: " + id + ", Name: " + account.getName()+ ", Balance: " + account.getBalance()));
 
-        // Тест YAML
-        String yamlFilePath = "data.yaml";
-        dataManager.exportData(accounts, yamlFilePath,ReportFormat.YAML);
-        System.out.println("YAML Exported");
-        Map<Integer, BankAccount> yamlImportedData = dataManager.importData(yamlFilePath,ReportFormat.YAML);
-        yamlImportedData.forEach((id, account) ->
-                System.out.println("YAML -> ID: " + id + ", Name: " + account.getName() + ", Balance: " + account.getBalance()));
-        */
     }
 }
