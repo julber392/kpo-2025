@@ -1,0 +1,9 @@
+---
+1:
+  balance: "10000"
+  name: "Savings"
+  id: "1"
+2:
+  balance: "5000"
+  name: "Checking"
+  id: "2"
